@@ -82,3 +82,13 @@ cat("Tamaño original del dataset: ", num_rows_total, "\n",
     nrow(cars) / num_rows_total * 100, 
     "% del dataset", sep="")
 
+
+# Para poder hacer arboles de decision se necesita que la variable a predecir
+# sea categorica. Basandonos en los cuartiles de la distribución de precios
+# creamos cuatro categorias.
+cars$category = "A"
+cars[cars$price < 17000,]$category = "B"
+cars[cars$price < 9000,]$category = "C"
+cars[cars$price < 5000,]$category = "D"
+
+write.csv(cars, "vehicles_clean.csv")
